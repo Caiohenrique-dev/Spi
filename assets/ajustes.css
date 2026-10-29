@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3ee">
+  <meta name="description" content="SPI Moda. Conheça nossa coleção e encontre seu próximo look.">
+
+  <title>SPI Moda</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/ajustes.css">
+
+  <script src="assets/config.js" defer></script>
+  <script src="assets/app.js" defer></script>
+  <script src="assets/carrossel.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#colecao">Pular para os produtos</a>
+
+  <header class="header">
+    <a href="#inicio" class="wordmark" aria-label="SPI Moda, início">
+      <img
+        src="assets/images/logo-spi.png"
+        alt="SPI Moda"
+        class="logo-spi"
+        width="1280"
+        height="1280"
+      >
+    </a>
+
+    <nav class="desktop-nav" aria-label="Menu principal">
+      <a href="#colecao" data-nav-filter="Novidades">Novidades</a>
+      <a href="#colecao" data-nav-filter="Roupas">Roupas</a>
+      <a href="#colecao" data-nav-filter="Acessórios">Acessórios</a>
+      <a href="#sobre">A SPI</a>
+    </nav>
+
+    <div class="header-actions">
+      <button
+        class="icon-button"
+        id="search-toggle"
+        aria-label="Buscar produtos"
+        aria-expanded="false"
+        aria-controls="search-panel"
+      >
+        <span data-icon="search"></span>
+      </button>
+
+      <button
+        class="icon-button favorites-toggle"
+        id="favorites-toggle"
+        aria-label="Ver favoritos"
+        aria-pressed="false"
+      >
+        <span data-icon="heart"></span>
+        <span id="favorites-count" class="counter small-counter" hidden>0</span>
+      </button>
+
+      <button class="bag-button" id="cart-toggle" aria-label="Abrir sacola">
+        <span data-icon="bag"></span>
+        <span class="bag-label">Sacola</span>
+        <span class="counter" id="cart-count">0</span>
+      </button>
+
+      <button
+        class="icon-button mobile-menu-toggle"
+        id="menu-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span data-icon="menu"></span>
+      </button>
+    </div>
+  </header>
+
+  <nav
+    id="mobile-menu"
+    class="mobile-menu"
+    aria-label="Menu para celular"
+    hidden
+  >
+    <a href="#colecao" data-nav-filter="Novidades">Novidades</a>
+    <a href="#colecao" data-nav-filter="Roupas">Roupas</a>
+    <a href="#colecao" data-nav-filter="Acessórios">Acessórios</a>
+    <a href="#sobre">A SPI</a>
+  </nav>
+
+  <section
+    id="search-panel"
+    class="search-panel"
+    aria-label="Buscar na loja"
+    hidden
+  >
+    <div class="search-field">
+      <span data-icon="search"></span>
+
+      <input
+        id="search-input"
+        type="search"
+        placeholder="O que combina com você hoje?"
+        aria-label="Buscar pelo nome ou categoria"
+        autocomplete="off"
+      >
+
+      <button id="search-clear" class="text-button">Limpar</button>
+    </div>
+
+    <p>Busque por vestido, calça, bolsa ou pelo nome da peça.</p>
+  </section>
+
+  <main>
+    <!-- A antiga área "Seu estilo. Sua essência." virou o carrossel. -->
+    <section
+      id="inicio"
+      class="hero-carousel"
+      role="region"
+      aria-roledescription="carrossel"
+      aria-label="Fotos da SPI Moda"
+      tabindex="-1"
+    >
+      <h1 class="sr-only">SPI Moda</h1>
+
+      <div id="carousel-slides" class="carousel-slides">
+        <div class="carousel-slide is-active">
+          <img
+            src="assets/images/editorial.jpg"
+            alt="Editorial de moda da SPI."
+            width="1600"
+            height="900"
+            fetchpriority="high"
+          >
+        </div>
+      </div>
+
+      <div class="carousel-overlay">
+        <a
+          class="button button-dark"
+          href="#colecao"
+          id="hero-cta"
+        >
+          Explore a coleção
+        </a>
+
+        <div id="carousel-controls" class="carousel-controls" hidden>
+          <button
+            type="button"
+            id="carousel-prev"
+            aria-label="Mostrar foto anterior"
+          >
+            Anterior
+          </button>
+
+          <span id="carousel-count" aria-live="off"></span>
+
+          <button
+            type="button"
+            id="carousel-next"
+            aria-label="Mostrar próxima foto"
+          >
+            Próxima
+          </button>
+
+          <button
+            type="button"
+            id="carousel-pause"
+            aria-label="Pausar troca automática de fotos"
+            aria-pressed="false"
+          >
+            Pausar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Como comprar">
+      <div>
+        <span data-icon="bag"></span>
+        <span>
+          <strong>Escolha com personalidade</strong>
+          <small>Encontre as peças do seu momento</small>
+        </span>
+      </div>
+
+      <div>
+        <span data-icon="bag"></span>
+        <span>
+          <strong>Sua seleção, do seu jeito</strong>
+          <small>Salve favoritos e monte a sua sacola</small>
+        </span>
+      </div>
+
+      <div>
+        <span data-icon="chat"></span>
+        <span>
+          <strong>Converse com a SPI</strong>
+          <small>Confirme os detalhes com a loja</small>
+        </span>
+      </div>
+    </section>
+
+    <section id="colecao" class="collection section-wrap">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">A sua próxima escolha</p>
+          <h2>Vai com você.</h2>
+        </div>
+
+        <p>
+          Do básico que fica<br>
+          ao detalhe que transforma.
+        </p>
+      </div>
+
+      <div class="catalog-toolbar">
+        <div class="filter-tabs" role="group" aria-label="Filtrar produtos">
+          <button
+            class="filter-tab active"
+            data-filter="Todos"
+            aria-pressed="true"
+          >
+            Ver tudo
+          </button>
+
+          <button
+            class="filter-tab"
+            data-filter="Novidades"
+            aria-pressed="false"
+          >
+            Novidades
+          </button>
+
+          <button
+            class="filter-tab"
+            data-filter="Roupas"
+            aria-pressed="false"
+          >
+            Roupas
+          </button>
+
+          <button
+            class="filter-tab"
+            data-filter="Acessórios"
+            aria-pressed="false"
+          >
+            Acessórios
+          </button>
+        </div>
+
+        <label class="sort-label">
+          <span>Ordenar por</span>
+          <select id="sort-select" aria-label="Ordenar produtos">
+            <option value="featured">Destaques</option>
+            <option value="price-asc">Menor preço</option>
+            <option value="price-desc">Maior preço</option>
+            <option value="name">Nome: A–Z</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="results-row">
+        <p id="result-count" aria-live="polite"></p>
+
+        <button id="reset-filters" class="text-button" hidden>
+          Limpar filtros
+        </button>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+
+      <div class="empty-state" id="empty-state" hidden>
+        <span data-icon="search"></span>
+        <h3>Nenhuma peça por aqui.</h3>
+        <p>Experimente outra busca ou descubra a seleção completa.</p>
+
+        <button class="button button-dark" id="empty-reset">
+          Ver todas as peças
+        </button>
+      </div>
+
+      <p class="catalog-note">
+        Seleção demonstrativa. Imagens e preços ilustrativos;
+        confirme o catálogo e a disponibilidade com a loja.
+      </p>
+    </section>
+
+    <section class="editorial-band">
+      <div class="editorial-image">
+        <img
+          src="assets/images/lookbook.jpg"
+          alt="Look urbano com conjunto amarelo e tênis."
+          width="1200"
+          height="1800"
+          loading="lazy"
+        >
+
+        <span>SPI Inspiração</span>
+      </div>
+
+      <div class="editorial-copy">
+        <p class="eyebrow">Menos regras. Mais você.</p>
+
+        <h2>O melhor look<br>é se sentir bem.</h2>
+
+        <p>
+          Um encontro, um novo começo ou só mais uma terça-feira.
+          Tem sempre um jeito de colocar a sua personalidade em cada detalhe.
+        </p>
+
+        <a
+          href="#colecao"
+          class="underlined-link"
+          data-nav-filter="Roupas"
+        >
+          Encontre o seu estilo
+        </a>
+      </div>
+    </section>
+
+    <section id="sobre" class="about-section section-wrap">
+      <div>
+        <p class="eyebrow">Prazer, SPI Moda</p>
+        <h2>A moda muda.<br>A sua essência fica.</h2>
+      </div>
+
+      <div class="about-text">
+        <p>
+          Acreditamos no poder de vestir quem você é.
+          Na liberdade de misturar, experimentar e encontrar
+          beleza nos seus próprios caminhos.
+        </p>
+
+        <p>
+          Descubra o universo SPI e acompanhe as novidades,
+          os looks e os detalhes de cada peça no nosso Instagram.
+        </p>
+
+        <a
+          class="underlined-link"
+          href="https://www.instagram.com/spi.moda/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span data-icon="instagram"></span>
+          @spi.moda
+        </a>
+      </div>
+    </section>
+
+    <section class="instagram-band">
+      <div>
+        <span data-icon="instagram"></span>
+        <p>Seu próximo look pode<br>estar no nosso feed.</p>
+      </div>
+
+      <a
+        class="button button-outline"
+        href="https://www.instagram.com/spi.moda/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Siga a SPI Moda
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <a
+        href="#inicio"
+        class="wordmark footer-logo"
+        aria-label="SPI Moda, voltar ao início"
+      >
+        <img
+          src="assets/images/logo-spi.png"
+          alt="SPI Moda"
+          class="logo-spi"
+          width="1280"
+          height="1280"
+          loading="lazy"
+        >
+      </a>
+
+      <p>Do seu jeito.<br>Em todos os momentos.</p>
+
+      <div>
+        <strong>Explore</strong>
+        <a href="#colecao">Coleção</a>
+        <button class="footer-link" id="footer-favorites">
+          Meus favoritos
+        </button>
+      </div>
+
+      <div>
+        <strong>Podemos ajudar?</strong>
+        <button class="footer-link" data-info="comprar">Como comprar</button>
+        <button class="footer-link" data-info="tamanhos">Guia de tamanhos</button>
+        <button class="footer-link" data-info="trocas">Entregas e trocas</button>
+      </div>
+
+      <div>
+        <strong>Vamos conversar</strong>
+        <a
+          href="https://www.instagram.com/spi.moda/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
+        <button class="footer-link" data-info="contato">Atendimento</button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>
+        © <span id="year"></span> SPI Moda. Proposta de loja online.
+      </span>
+
+      <button class="footer-link" data-info="privacidade">
+        Privacidade
+      </button>
+
+      <a href="#inicio">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <button
+    id="contact-float"
+    class="contact-float"
+    aria-label="Abrir atendimento"
+  >
+    <span data-icon="chat"></span>
+    <span>Fale com a SPI</span>
+  </button>
+
+  <dialog
+    id="product-dialog"
+    class="product-dialog"
+    aria-labelledby="product-title"
+  >
+    <button
+      class="close-button modal-close"
+      aria-label="Fechar detalhes"
+      data-close
+    >
+      <span data-icon="close"></span>
+    </button>
+
+    <div id="product-detail"></div>
+  </dialog>
+
+  <dialog id="cart-dialog" class="drawer" aria-labelledby="cart-title">
+    <div class="drawer-header">
+      <h2 id="cart-title">
+        Sua sacola <span id="drawer-count">0</span>
+      </h2>
+
+      <button class="icon-button" aria-label="Fechar sacola" data-close>
+        <span data-icon="close"></span>
+      </button>
+    </div>
+
+    <div id="cart-content" class="cart-content"></div>
+
+    <div id="cart-summary" class="cart-summary" hidden>
+      <div class="subtotal">
+        <span>Subtotal</span>
+        <strong id="cart-total"></strong>
+      </div>
+
+      <p>Entrega e pagamento a combinar com a loja.</p>
+
+      <button id="checkout-open" class="button button-dark full-width">
+        Continuar pedido
+      </button>
+
+      <button class="text-button continue-shopping" data-close>
+        Continuar explorando
+      </button>
+    </div>
+  </dialog>
+
+  <dialog
+    id="checkout-dialog"
+    class="checkout-dialog"
+    aria-labelledby="checkout-title"
+  >
+    <button
+      class="close-button modal-close"
+      aria-label="Fechar pedido"
+      data-close
+    >
+      <span data-icon="close"></span>
+    </button>
+
+    <div class="checkout-intro">
+      <p class="eyebrow">Falta pouco</p>
+      <h2 id="checkout-title">Vamos combinar<br>os detalhes?</h2>
+
+      <p>
+        Monte sua solicitação para conversar com a loja.
+        O pedido depende da confirmação de disponibilidade,
+        entrega e pagamento.
+      </p>
+    </div>
+
+    <form id="checkout-form">
+      <label>
+        Seu nome
+        <input
+          name="customer"
+          autocomplete="given-name"
+          required
+          maxlength="80"
+          placeholder="Como podemos chamar você?"
+        >
+      </label>
+
+      <div class="form-row">
+        <label>
+          Como prefere receber?
+          <select name="delivery" id="delivery-select">
+            <option value="Consultar entrega">Consultar entrega</option>
+            <option value="Consultar retirada">Consultar retirada</option>
+          </select>
+        </label>
+
+        <label id="cep-label">
+          CEP para consulta
+          <input
+            name="cep"
+            id="cep-input"
+            inputmode="numeric"
+            autocomplete="postal-code"
+            placeholder="00000-000"
+            pattern="[0-9]{5}-[0-9]{3}"
+            maxlength="9"
+          >
+        </label>
+      </div>
+
+      <label>
+        Algum detalhe?
+        <textarea
+          name="notes"
+          rows="2"
+          maxlength="400"
+          placeholder="Dúvidas sobre medidas, cores ou entrega."
+        ></textarea>
+      </label>
+
+      <div class="checkout-total">
+        <span>Subtotal das peças</span>
+        <strong id="checkout-total"></strong>
+      </div>
+
+      <p class="checkout-note" id="checkout-note"></p>
+
+      <button
+        type="submit"
+        class="button button-dark full-width"
+        id="checkout-submit"
+      >
+        Preparar solicitação
+      </button>
+    </form>
+
+    <div id="order-ready" hidden>
+      <div class="success-mark">
+        <span data-icon="check"></span>
+      </div>
+
+      <h3>Seu resumo está pronto.</h3>
+
+      <p id="order-ready-text">
+        Envie o resumo para a SPI Moda para confirmar os detalhes.
+      </p>
+
+      <textarea
+        id="order-text"
+        readonly
+        aria-label="Resumo da solicitação"
+        rows="9"
+      ></textarea>
+
+      <div class="order-actions">
+        <button class="button button-dark" id="copy-order">
+          <span data-icon="copy"></span>
+          Copiar resumo
+        </button>
+
+        <button class="button button-outline" id="download-order">
+          Baixar resumo
+        </button>
+      </div>
+
+      <a
+        id="order-channel"
+        class="underlined-link"
+        href="https://www.instagram.com/spi.moda/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Abrir Instagram da loja
+      </a>
+
+      <p class="small-print">
+        Solicitação preparada. Nenhum pedido foi enviado
+        ou pagamento realizado pelo site.
+      </p>
+
+      <button class="text-button" id="edit-order">
+        Voltar e editar
+      </button>
+    </div>
+  </dialog>
+
+  <dialog
+    id="info-dialog"
+    class="info-dialog"
+    aria-labelledby="info-title"
+  >
+    <button
+      class="close-button modal-close"
+      aria-label="Fechar informação"
+      data-close
+    >
+      <span data-icon="close"></span>
+    </button>
+
+    <div id="info-content"></div>
+  </dialog>
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+    hidden
+  ></div>
+
+  <noscript>
+    <div class="noscript">
+      Ative o JavaScript para explorar o catálogo e montar sua sacola.
+      Você também pode falar com a SPI pelo
+      <a href="https://www.instagram.com/spi.moda/">Instagram</a>.
+    </div>
+  </noscript>
+</body>
+</html>

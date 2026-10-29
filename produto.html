@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta
+    name="description"
+    content="Conheça os detalhes dos produtos da SPI Moda."
+  >
+
+  <title>Produto | SPI Moda</title>
+
+ <link rel="stylesheet" href="assets/produto.css?v=2">
+<link rel="stylesheet" href="assets/cabecalho.css?v=2">
+
+  <script src="assets/config.js" defer></script>
+  <script src="assets/app.js?v=10" defer></script>
+  <script src="assets/produto.js?v=2" defer></script>
+</head>
+
+<body class="product-page">
+  <a class="pp-skip" href="#pp-main">
+    Pular para o produto
+  </a>
+
+  <!-- Cabeçalho -->
+  <header class="pp-header">
+    <button
+      type="button"
+      id="pp-menu-toggle"
+      class="pp-icon pp-menu-toggle"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="pp-menu"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+    </button>
+
+    <a
+      href="index.html"
+      class="pp-logo"
+      aria-label="SPI Moda, início"
+    >
+      <img
+        src="assets/images/logo-spi.png"
+        alt="SPI Moda"
+        width="1280"
+        height="1280"
+      >
+    </a>
+
+    <!-- Pesquisa sempre visível -->
+    <form
+      id="pp-header-search"
+      class="pp-header-search"
+      action="index.html#colecao"
+      method="get"
+      role="search"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.5"></circle>
+        <path d="m16 16 4.5 4.5"></path>
+      </svg>
+
+      <input
+        id="pp-search-input"
+        type="search"
+        name="busca"
+        placeholder="Buscar produtos"
+        aria-label="Buscar produtos"
+        required
+        maxlength="120"
+        enterkeyhint="search"
+      >
+
+      <button type="submit">
+        Buscar
+      </button>
+    </form>
+
+    <div class="pp-actions">
+      <a
+        href="index.html?favoritos=1#colecao"
+        class="pp-icon pp-header-favorites"
+        aria-label="Ver favoritos"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"
+          ></path>
+        </svg>
+
+        <span
+          id="pp-favorites-count"
+          class="pp-counter"
+          hidden
+        >0</span>
+      </a>
+
+      <a
+        href="index.html?sacola=1#colecao"
+        id="pp-cart-link"
+        class="pp-icon"
+        aria-label="Abrir sacola"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 7h14l1 14H4L5 7Z"></path>
+          <path d="M8 8V6a4 4 0 0 1 8 0v2"></path>
+        </svg>
+
+        <span
+          id="pp-cart-count"
+          class="pp-counter"
+          hidden
+        >0</span>
+      </a>
+    </div>
+
+    <nav
+      class="pp-desktop-nav"
+      aria-label="Categorias da loja"
+    >
+      <a href="index.html?categoria=Novidades#colecao">
+        Novidades
+      </a>
+
+      <a href="index.html?categoria=Roupas#colecao">
+        Roupas
+      </a>
+
+      <a href="index.html?categoria=Sapatos#colecao">
+        Sapatos
+      </a>
+
+      <a href="index.html?categoria=Bolsas#colecao">
+        Bolsas
+      </a>
+
+      <a href="index.html?categoria=Acess%C3%B3rios#colecao">
+        Acessórios
+      </a>
+
+      <a href="index.html?categoria=Copos#colecao">
+        Copos
+      </a>
+    </nav>
+  </header>
+
+  <!-- Menu do celular -->
+  <button
+    type="button"
+    id="pp-menu-shade"
+    class="pp-menu-shade"
+    aria-label="Fechar menu"
+    hidden
+  ></button>
+
+  <nav
+    id="pp-menu"
+    class="pp-menu"
+    aria-label="Menu da loja"
+    hidden
+  >
+    <a href="index.html#colecao">Ver tudo</a>
+    <a href="index.html?categoria=Novidades#colecao">Novidades</a>
+    <a href="index.html?categoria=Roupas#colecao">Roupas</a>
+    <a href="index.html?categoria=Sapatos#colecao">Sapatos</a>
+    <a href="index.html?categoria=Bolsas#colecao">Bolsas</a>
+    <a href="index.html?categoria=Acess%C3%B3rios#colecao">Acessórios</a>
+    <a href="index.html?categoria=Copos#colecao">Copos</a>
+    <a href="index.html?favoritos=1#colecao">Meus favoritos</a>
+  </nav>
+
+  <main
+    id="pp-main"
+    class="pp-main"
+    aria-busy="true"
+  >
+    <p
+      id="pp-loading"
+      class="pp-status"
+      role="status"
+    >
+      Carregando produto.
+    </p>
+
+    <section id="pp-error" class="pp-status" hidden>
+      <h1>Produto não encontrado.</h1>
+
+      <p id="pp-error-message">
+        Escolha outro produto na coleção.
+      </p>
+
+      <a
+        href="index.html#colecao"
+        class="pp-button pp-button-dark"
+      >
+        Ver coleção
+      </a>
+    </section>
+
+    <div id="pp-content" hidden>
+      <nav class="pp-breadcrumb" aria-label="Você está em">
+        <a href="index.html">Início</a>
+
+        <span aria-hidden="true">/</span>
+
+        <a
+          id="pp-category-link"
+          href="index.html#colecao"
+        >
+          Coleção
+        </a>
+
+        <span aria-hidden="true">/</span>
+
+        <span
+          id="pp-breadcrumb-name"
+          aria-current="page"
+        ></span>
+      </nav>
+
+      <!-- Produto -->
+      <div class="pp-product">
+        <section
+          id="pp-gallery"
+          class="pp-gallery"
+          aria-label="Fotos do produto"
+        >
+          <div
+            id="pp-thumbnails"
+            class="pp-thumbnails"
+            role="group"
+            aria-label="Escolher foto"
+            hidden
+          ></div>
+
+          <div class="pp-main-photo">
+            <img
+              id="pp-main-image"
+              alt=""
+              width="1200"
+              height="1600"
+              fetchpriority="high"
+            >
+
+            <p id="pp-photo-error" hidden>
+              Imagem indisponível.
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="pp-details"
+          aria-labelledby="pp-name"
+        >
+          <h1 id="pp-name"></h1>
+
+          <p id="pp-reference" class="pp-reference"></p>
+          <p id="pp-price" class="pp-price"></p>
+
+          <p class="pp-payment-note">
+            Pagamento e disponibilidade confirmados com a loja.
+          </p>
+
+          <p id="pp-color" class="pp-color"></p>
+
+          <div class="pp-size-heading">
+            <span id="pp-size-label">Tamanho</span>
+
+            <button
+              type="button"
+              id="pp-guide-open"
+              class="pp-text-button"
+            >
+              Guia de tamanhos
+            </button>
+          </div>
+
+          <div
+            id="pp-sizes"
+            class="pp-sizes"
+            role="group"
+            aria-labelledby="pp-size-label"
+          ></div>
+
+          <div class="pp-quantity-row">
+            <span>Quantidade</span>
+
+            <div class="pp-quantity">
+              <button
+                type="button"
+                id="pp-minus"
+                aria-label="Diminuir quantidade"
+                disabled
+              >
+                −
+              </button>
+
+              <output
+                id="pp-quantity"
+                aria-live="polite"
+              >1</output>
+
+              <button
+                type="button"
+                id="pp-plus"
+                aria-label="Aumentar quantidade"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <p
+            id="pp-purchase-error"
+            class="pp-error"
+            role="alert"
+            hidden
+          ></p>
+
+          <div class="pp-buy-row">
+            <a
+              id="pp-buy"
+              class="pp-button pp-button-dark"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Comprar 
+            </a>
+
+            <button
+              type="button"
+              id="pp-favorite"
+              class="pp-product-favorite"
+              aria-label="Salvar produto nos favoritos"
+              aria-pressed="false"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <button
+            type="button"
+            id="pp-add-cart"
+            class="pp-button pp-button-outline"
+          >
+            Adicionar à sacola
+          </button>
+
+          <p
+            id="pp-contact-fallback"
+            class="pp-contact-fallback"
+            hidden
+          >
+            Para consultar este produto,
+
+            <a
+              id="pp-instagram"
+              href="https://www.instagram.com/spi.moda/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              fale com a SPI pelo Instagram
+            </a>.
+          </p>
+
+          <!-- Informações -->
+          <div
+            class="pp-tabs"
+            role="tablist"
+            aria-label="Informações do produto"
+          >
+            <button
+              type="button"
+              id="pp-tab-description"
+              role="tab"
+              aria-selected="true"
+              aria-controls="pp-panel-description"
+              tabindex="0"
+            >
+              Descrição
+            </button>
+
+            <button
+              type="button"
+              id="pp-tab-composition"
+              role="tab"
+              aria-selected="false"
+              aria-controls="pp-panel-composition"
+              tabindex="-1"
+            >
+              Composição
+            </button>
+
+            <button
+              type="button"
+              id="pp-tab-exchanges"
+              role="tab"
+              aria-selected="false"
+              aria-controls="pp-panel-exchanges"
+              tabindex="-1"
+            >
+              Trocas
+            </button>
+          </div>
+
+          <div
+            id="pp-panel-description"
+            class="pp-tab-panel"
+            role="tabpanel"
+            aria-labelledby="pp-tab-description"
+            tabindex="0"
+          ></div>
+
+          <div
+            id="pp-panel-composition"
+            class="pp-tab-panel"
+            role="tabpanel"
+            aria-labelledby="pp-tab-composition"
+            tabindex="0"
+            hidden
+          ></div>
+
+          <div
+            id="pp-panel-exchanges"
+            class="pp-tab-panel"
+            role="tabpanel"
+            aria-labelledby="pp-tab-exchanges"
+            tabindex="0"
+            hidden
+          ></div>
+        </section>
+      </div>
+
+      <!-- Produtos da mesma categoria -->
+      <section
+        id="pp-related"
+        class="pp-recommendations"
+        aria-labelledby="pp-related-title"
+        hidden
+      >
+        <div class="pp-section-heading">
+          <h2 id="pp-related-title">
+            Você também pode gostar
+          </h2>
+
+          <a
+            id="pp-related-all"
+            href="index.html#colecao"
+          >
+            Ver categoria
+          </a>
+        </div>
+
+        <div
+          id="pp-related-grid"
+          class="pp-recommend-grid"
+        ></div>
+      </section>
+
+      <!-- Histórico deste navegador -->
+      <section
+        id="pp-recent"
+        class="pp-recommendations"
+        aria-labelledby="pp-recent-title"
+        hidden
+      >
+        <div class="pp-section-heading">
+          <h2 id="pp-recent-title">
+            Vistos recentemente
+          </h2>
+
+          <button
+            type="button"
+            id="pp-clear-recent"
+            class="pp-text-button"
+          >
+            Limpar histórico
+          </button>
+        </div>
+
+        <div
+          id="pp-recent-grid"
+          class="pp-recommend-grid"
+        ></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Rodapé da página inicial -->
+  <footer class="spi-footer" aria-label="Rodapé da SPI Moda">
+  <div class="spi-footer-inner">
+
+    <div class="spi-footer-main">
+
+      <!-- Marca -->
+      <div class="spi-footer-brand">
+        <a
+          href="index.html"
+          class="spi-footer-logo"
+          aria-label="SPI Moda, início"
+        >
+          <img
+            src="assets/images/logo-spi.png"
+            alt="SPI Moda"
+            width="1280"
+            height="1280"
+            loading="lazy"
+          >
+        </a>
+
+        <p>
+          Moda e personalidade para acompanhar
+          cada momento seu.
+        </p>
+
+        <span>Desde 2016.</span>
+      </div>
+
+      <!-- Categorias -->
+      <nav class="spi-footer-column" aria-label="Explore a coleção">
+        <h2 class="spi-footer-title">Explore</h2>
+
+        <a href="index.html#colecao">Todos os produtos</a>
+        <a href="index.html?categoria=Roupas#colecao">Roupas</a>
+        <a href="index.html?categoria=Sapatos#colecao">Sapatos</a>
+        <a href="index.html?categoria=Bolsas#colecao">Bolsas</a>
+        <a href="index.html?categoria=Acess%C3%B3rios#colecao">Acessórios</a>
+        <a href="index.html?categoria=Copos#colecao">Copos</a>
+      </nav>
+
+      <!-- Informações -->
+      <nav class="spi-footer-column" aria-label="Informações e ajuda">
+        <h2 class="spi-footer-title">Podemos ajudar?</h2>
+
+        <button type="button" data-info="comprar">
+          Como comprar
+        </button>
+
+        <button type="button" data-info="tamanhos">
+          Guia de tamanhos
+        </button>
+
+        <button type="button" data-info="trocas">
+          Entregas e trocas
+        </button>
+
+        <a href="index.html?favoritos=1#colecao">
+          Meus favoritos
+        </a>
+
+        <button type="button" data-info="privacidade">
+          Privacidade
+        </button>
+      </nav>
+
+      <!-- Contatos lado a lado -->
+      <div class="spi-footer-column spi-footer-contact">
+        <h2 class="spi-footer-title">Fale com a SPI</h2>
+
+        <div class="spi-footer-socials">
+
+          <a
+            href="https://wa.me/5524992185519"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="spi-footer-contact-link spi-footer-contact-whatsapp"
+          >
+            <img
+              src="assets/images/whatsapp-rodape.png"
+              alt=""
+              width="24"
+              height="24"
+            >
+
+            <span>WhatsApp</span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/spi.moda/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="spi-footer-contact-link"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="5"
+              />
+
+              <circle cx="12" cy="12" r="4"/>
+
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+              />
+            </svg>
+
+            <span>@spi.moda</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Créditos -->
+    <div class="spi-footer-bottom">
+      <p class="spi-footer-copyright">
+        © <span id="year">2026</span> SPI Moda.
+
+        <span class="spi-footer-rights">
+          Todos os direitos reservados.
+        </span>
+      </p>
+
+      <p class="spi-footer-credit">
+        Desenvolvido por
+        <a
+          href="https://caiohenrique.pythonanywhere.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          FluxoSystems
+        </a>
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+  <!-- Guia de tamanhos -->
+  <dialog
+    id="pp-guide"
+    class="pp-guide"
+    aria-labelledby="pp-guide-title"
+  >
+    <div class="pp-guide-heading">
+      <h2 id="pp-guide-title">Guia de tamanhos</h2>
+
+      <button
+        type="button"
+        id="pp-guide-close"
+        class="pp-icon"
+        aria-label="Fechar guia"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m6 6 12 12M6 18 18 6"></path>
+        </svg>
+      </button>
+    </div>
+
+    <p>
+      As medidas variam conforme a peça e a modelagem.
+      Fale com a SPI para confirmar o tamanho ideal.
+    </p>
+
+    <img
+      id="pp-guide-image"
+      alt="Tabela de medidas do produto"
+      hidden
+    >
+
+    <a
+      id="pp-guide-contact"
+      class="pp-button pp-button-dark"
+      href="https://www.instagram.com/spi.moda/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Pedir medidas à loja
+    </a>
+  </dialog>
+
+  <!-- Atendimento -->
+  <button
+    type="button"
+    id="contact-float"
+    class="contact-float"
+    aria-label="Abrir atendimento"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M21 11.5a9 9 0 0 1-13.2 8L3 21l1.5-4.8A9 9 0 1 1 21 11.5Z"
+      ></path>
+    </svg>
+
+    <span>Fale com a SPI</span>
+  </button>
+
+  <!-- Informações compartilhadas com o início -->
+  <dialog
+    id="info-dialog"
+    class="info-dialog"
+    aria-labelledby="info-title"
+  >
+    <button
+      type="button"
+      class="close-button modal-close"
+      aria-label="Fechar informação"
+      data-close
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m6 6 12 12M6 18 18 6"></path>
+      </svg>
+    </button>
+
+    <div id="info-content"></div>
+  </dialog>
+
+  <div
+    id="pp-toast"
+    class="pp-toast"
+    role="status"
+    hidden
+  ></div>
+
+  <noscript>
+    <p class="pp-status">
+      Ative o JavaScript para ver o produto
+      ou fale com a SPI pelo Instagram.
+    </p>
+  </noscript>
+</body>
+</html>
